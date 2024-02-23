@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoisting and Closures</title>
+    <script>
+        // Hoisting
+        console.log(a) //undefined
+        host();
+        function host(){
+            console.log(a) //undefined
+        }
+        var a=5;
+        console.log(a) //5
+
+        //Closures
+        function hello(){
+            var b=10;   
+            function world(){
+                console.log(b);
+            }
+            var b=21;
+            var b=25;
+            return world;
+        }
+        // hello();
+        let fun=hello();
+        fun();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

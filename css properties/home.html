@@ -1,0 +1,411 @@
+<!DOCTYPE html <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport content=" width=-width, initialscale=1.">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3s4Wz6iJgD/+ub2oU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz4fnFO9gybBud7TlRbs/ic4AwGcFZOxg5DpPt8EgeUIgIwzjWfXQKWA3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+    crossorigin="anonymous"></script>
+<script> var footer = document.querySelector("footer");
+    var lastElement = document.querySelector(".last-element");
+    lastElement.style.marginBottom = footer.offsetHeight + "px";
+</script>
+<script>
+    document.querySelector('.mobile-menu').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+</script>
+
+<style>
+    body {
+        background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+            linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+            linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
+            radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+            radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+        background-blend-mode: screen, color-dodge, overlay, difference, normal;
+        padding-top: 20px;
+    }
+
+    nav {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: #060606;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.3s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+    }
+
+    .nav-links a:hover {
+        color: #f7f8f6;
+        border-bottom-color: #fff;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background-color: #836d6d;
+        border-radius: 5px;
+        padding: 0 0.5rem;
+        color: #836d6d;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.5rem;
+        border: none;
+    }
+
+    .search-box button {
+        background-color: transparent;
+        border: none;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: transparent;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px var(--shadow-color);
+        z-index: 1;
+        top: 100%;
+        left: 0;
+    }
+
+    .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: var(--hover-color)
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    h1 {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 90px;
+        width: 100%;
+        align-items: center;
+        color: rgb(15, 15, 15);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    }
+
+    .name-para {
+        color: #2b2020;
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+
+
+    }
+
+    .cards {
+        /* padding: 50px 0; */
+        text-align: center;
+        
+    }
+
+    .card-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .card-item {
+        background: #fff;
+        padding: 26px;
+        border-radius: 8px;
+        box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+        list-style: none;
+        cursor: pointer;
+        text-decoration: none;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .card-item img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border-radius: 8px;
+        object-fit: cover;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .card-item img:hover{
+        width: 110%;
+        height: auto;
+        filter: brightness(1.3);
+        opacity: 0.8;
+        transform: rotateZ(10deg);
+        
+    }
+
+    .card-item h3 {
+        color: #000;
+        font-size: 1.438rem;
+        margin-top: 28px;
+        font-weight: 600;
+    }
+
+    .card-item span {
+        display: inline-block;
+        background: #F7DFF5;
+        margin-top: 20px;
+        padding: 8px 15px;
+        font-size: 0.75rem;
+        border-radius: 50px;
+        font-weight: 600;
+    }
+
+    .card-item .arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-35deg);
+        height: 40px;
+        width: 40px;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 50%;
+        margin-top: 40px;
+        transition: 0.2s ease;
+    }
+
+    .card-item:hover .arrow {
+        background: #000;
+        color: #fff;
+        animation: rotate 0.5s linear;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(-35deg);
+        }
+
+        to {
+            transform: rotate(35deg);
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .card-list .card-item {
+            padding: 15px;
+        }
+    }
+
+    @media screen and (max-width: 980px) {
+        .card-list {
+            margin: 0 auto;
+        }
+    }
+
+    .testimonial-container {
+        padding-top: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        max-width: 1060px;
+        background-color: antiquewhite;
+        border-radius: 8px;
+        box-shadow: 0px 5px 10px rgba(14, 13, 13, 0.1);
+    }
+
+    .testimonial {
+        flex-basis: calc(33.333% - 20px);
+        margin-bottom: 20px;
+        padding-left: 5px;
+        padding: 5px;
+        text-align: center;
+        transition: transform 0.5s ease;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    .testimonial:hover {
+        transform: translateY(-10px);
+        box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        color: #777;
+    }
+
+    .testimonial h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 0;
+        color: #000;
+    }
+
+    #footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 2em 0;
+        margin-top: auto;
+    }
+</style>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li class="dropdown">
+                    <a href="#">Contact</a>
+                    <div class="dropdown-content">
+                        <a href="#contact-us">Contact Us</a>
+                        <a href="#email">Email</a>
+                        <a href="#loaction">Location</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+
+        <div class="mobile-menu">
+            <span>Home</span>
+            <span>About</span>
+            <span>Services</span>
+            <span>Contact</span>
+
+        </div>
+    </header>
+    <div class="name">
+        <h1>Shikaar</h1>
+        <p class="name-para">Travel with our company you can have best experience ever.</p>
+
+
+    </div>
+
+
+    <section class="cards">
+        <br><br><br><br>
+        <div class="card-list">
+            <div class="card-item">
+                <div class="pic"> <img src="chickmangaluru.jpg" alt="card 1"> </div>
+                <h3 style="color: #000;">Chikkamagaluru</h3> <span>Karnataka</span>
+                <p>Chikmagalur is a hill station in Karnataka, a state in southwest India. To the north is Baba
+                    Budangiri, a mountain range in the Western Ghats, with 3 large caves said to be holy. Trails through
+                    forests and grasslands lead up to Mullayanagiri Peak. The cascading Hebbe Falls lie in an area of
+                    coffee plantations. The forested Bhadra Wildlife Sanctuary, northwest of Chikmagalur, is home to
+                    elephants, tigers and leopards.</p>
+                <div class="arrow">&rarr;</div>
+            </div>
+            <div class="card-item">
+                <div class="pic"> <img src="gokarna.jpg" alt="card 1"> </div>
+                <h3 style="color: #000;">Gokarna</h3> <span>Karnataka</span>
+                <p>Gokarna is a town on the Arabian Sea, in the southwestern Indian state of Karnataka. A popular
+                    pilgrimage destination for Hindus, it’s known for sacred sites like Mahabaleshwar Temple, which has
+                    a shrine dedicated to the deity Shiva. Nearby, Koti Teertha is a temple tank where devotees wash in
+                    the holy waters. The town is also home to beaches such as palm-lined Gokarna, in the center, plus
+                    Kudle and Om farther south.</p>
+                <div class="arrow">&rarr;</div>
+            </div>
+            <div class="card-item">
+                <div class="pic"> <img src="manali.jpg" alt="card 1"> </div>
+                <h3 style="color: #000;">Manali</h3> <span>Himachal Pradesh</span>
+                <p>Manali is a high-altitude Himalayan resort town in India’s northern Himachal Pradesh state. It has a
+                    reputation as a backpacking center and honeymoon destination. Set on the Beas River, it’s a gateway
+                    for skiing in the Solang Valley and trekking in Parvati Valley. It's also a jumping-off point for
+                    paragliding, rafting and mountaineering in the Pir Panjal mountains, home to 4,000m-high Rohtang
+                    Pass.</p>
+                <div class="arrow">&rarr;</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="testimonial-container">
+        <div class="testimonial"> <img src="img1.jpg" alt="testimonial Image 1">
+            <p style="color: #666;">"The travel company's attention to detail and exceptional service made my vacation
+                truly wonderful. I highly recommend them to fellow travelers"</p>
+            <h3 style="color: #000;">Christina Morillo</h3>
+        </div>
+        <div class="testimonial"> <img src="img2.jpg" alt="Testimonial Image 2">
+            <p style="color: #666;">"I had an outstanding trip thanks to the amazing customer service provided by the
+                travel company. Everything was seamless and hassle-free."</p>
+            <h3 style="color: #000;">Sourab</h3>
+        </div>
+        <div class="testimonial"> <img src="img3.jpg" alt="Testimonial Image 3">
+            <p style="color: #666;">"My experience with this travel company was excellent – the itinerary was
+                well-planned, and the accommodations exceeded my expectations."</p>
+            <h3 style="color: #000;">Naomi</h3>
+        </div>
+    </div>
+
+
+    <footer id="footer" role="contentinfo">
+        &copy; 2024 Shikaar. All rights reserved.
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+.flex {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: black;
+    gap: 20px;
+    padding: 10px;
+}
+
+@media (max-width: 600px) {
+    .flex {
+        grid-template-columns: auto auto;
+    }
+}
+
+.container {
+    height: 250px;
+    width: 400px;
+    background-color: black;
+    border: solid white;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media print {
+    /* styles for print */
+}
+
+@media screen and (max-width: 600px) {
+    /* styles for screens that are 600 pixels wide or less */
+}

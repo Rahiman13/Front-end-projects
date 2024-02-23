@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function validatePhoneNumber(event) {
+            const input = event.target;
+            const value = input.value.replace(/\D/g, ''); // remove non-numeric characters
+            const maxLength = 10; // maximum length of a US phone number
+
+            // add formatting to the phone number
+            if (value.length > 0) {
+                if (value.length <= maxLength) {
+                    input.value = value.replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3');
+                } else {
+                    input.value = value.slice(0, maxLength).replace(/^(\d{3})(\d{3})(\d{4})$/, '($1) $2-$3');
+                    input.setCustomValidity('Please enter a valid phone number.');
+                }
+            } else {
+                input.setCustomValidity('');
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <!--
+// v0 by Vercel.
+// https://v0.dev/t/RIJFkKVb97j
+-->
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between p-4 bg-white-400">
+            <div class="flex space-x-4"><a href="#" class="font-bold text-2xl"><span class="text-red-400">M</span><span
+                        class="text-blue-600">edical</span></a>
+                <nav class="flex space-x-8 items-center justify-center px-24"><a href="#"
+                        class="text-blue-bg-green-800 hover:bg--80000 hover:text-blue-900">About</a><a href="#"
+                        class="text-blue-bg-green-800 hover:bg--80000 hover:text-blue-900">Services</a><a href="#"
+                        class="text-blue-bg-green-800 hover:bg--80000 hover:text-blue-900">Reviews</a><a href="#"
+                        class="text-blue-bg-green-800 hover:bg--80000 hover:text-blue-900">Location</a></nav>
+            </div>
+            <div class="text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="inline mr-2 text-blue-600">
+                    <div class="fas fa-phone"></div>
+                </svg>+91 7995436372
+                <br>
+                123 West 12th street, 5th Ave, Ongole 523001
+            </div>
+        </header>
+        <main>
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-image bg-cover "
+                style="background-image: url(cover.jpg);">
+                <div class="md:col-span-2 m-14">
+                    <h1 class="text-7xl font-semibold mb-4 text-blue-800">Quality Medical Treatment</h1>
+                    <!-- <p class="mb-4 text-blue-600 text-3xl">For You And Your Family</p><button
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 bg-blue-600 text-white">Watch
+                        our video</button> -->
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-14 h-14 text-red-400">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                        </svg>
+                        <p class="text-blue-600 flex items-center px-8 text-2xl font-semibold">Watch our video</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border shadow-sm  text-white mt-14 bg-white" data-v0-t="card">
+                    <div class="flex flex-col space-y-1.5 p-6 bg-blue-600">
+                        <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ">Make an
+                            appointment
+                        </h3>
+                    </div>
+                    <div class="p-6 ">
+                        <form>
+                            <div class="grid w-full gap-4"><input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-black ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    placeholder="Your name"><input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-black ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    placeholder="Your email address"><input type="" id="phoneNumber"
+                                    class="text-black flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    placeholder="Phone number" oninput="validatePhoneNumber(event)">
+                                <button
+                                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 bg-blue-600 text-white ">Book
+                                    now</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="flex items-center p-6">
+                        <p class="text-sm text-blue-600">Hurry up, we have a limited amount of slots this month.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="py-4 m-14">
+                <h2 class="text-3xl font-bold mb-2 text-blue-800">Why Choose Our Clinic</h2>
+                <p class="mb-4 text-blue-600">Here are a few reasons why Medical is the area's healthcare provider of
+                    choice.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="rounded-lg border border-shadow bg-card text-card-foreground shadow-lg"
+                        data-v0-t="card">
+                        <div class="p-6 flex flex-col items-center text-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 ">
+                                <!-- <div class="fas fa-user-md mb-2 text-3xl"></div> -->
+                                <path
+                                    d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3">
+                                </path>
+                                <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path>
+                                <circle cx="20" cy="10" r="2"></circle>
+                            </svg>
+                            <h3 class="font-semibold">Professional Doctors</h3>
+                            <p>Our clinic hires experienced and nationally certified doctors and nurses.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border border-shadow bg-card text-card-foreground shadow-lg"
+                        data-v0-t="card">
+                        <div class="p-6 flex flex-col items-center text-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="text-blue-600 mb-2">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            <h3 class="font-semibold">Family medicine</h3>
+                            <p>We provide a wide variety of family medicine services including hospital care.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border border-shadow bg-card text-card-foreground shadow-lg"
+                        data-v0-t="card">
+                        <div class="p-6 flex flex-col items-center text-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="text-blue-600 mb-2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <path d="M12 17h.01"></path>
+                            </svg>
+                            <h3 class="font-semibold">24/7 patient support</h3>
+                            <p>Our clinic provides extensive medical support and healthcare services 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-4 bg-orange-100">
+                <h2 class="text-3xl font-bold mb-2 flex items-center justify-center text-blue-800 mt-6">Our Services
+                </h2>
+                <p class="mb-4 flex items-center justify-center text-blue-600">We offer complete healthcare to
+                    individuals with various health concerns.</p>
+                <div class=" px-8 flex overflow-x-auto gap-4 ">
+                    <div class=" rounded-lg border bg-card bg-green-400 text-card-foreground shadow-lg min-w-[200px] hover:bg-green-800"
+                        data-v0-t="card">
+                        <div class=" flex flex-col items-center text-center"><span
+                                class="relative flex  h-44 w-full rounded-2xl"><img
+                                    class="aspect-square h-full w-full rounded" alt="Heart Care Programs"
+                                    src="healthcare.jpg"></span>
+                            <h3 class="font-bold text-2xl text-white m-4">Heart Care Programs</h3>
+                            <p class="text-white">We provide everything you need to maintain a healthy heart at all
+                                times.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-card bg-yellow-400 text-card-foreground shadow-lg min-w-[200px] hover:bg-yellow-800"
+                        data-v0-t="card">
+                        <div class=" flex flex-col items-center text-center"><span
+                                class="relative flex h-44 w-full rounded-2xl"><img
+                                    class="aspect-square h-full w-full rounded" alt="Pregnancy &amp; Child Birth"
+                                    src="child.jpg"></span>
+                            <h3 class="font-bold text-2xl text-white m-4">Pregnancy &amp; Child Birth</h3>
+                            <p class="text-white">Delivering the best pregnancy and childbirth experience for women.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-card bg-blue-400 text-card-foreground shadow-lg min-w-[200px] hover:bg-blue-800"
+                        data-v0-t="card">
+                        <div class=" flex flex-col items-center text-center"><span
+                                class="relative flex h-44 w-full rounded-2xl"><img
+                                    class="aspect-square h-full w-full rounded" alt="Laboratory Analysis"
+                                    src="lab.jpg"></span>
+                            <h3 class="font-bold text-2xl text-white m-4">Laboratory Analysis</h3>
+                            <p class="text-white">Our laboratory provides testing in hematology, coagulation, blood gas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-card bg-red-400 text-card-foreground shadow-lg min-w-[200px] hover:bg-red-800"
+                        data-v0-t="card">
+                        <div class=" flex flex-col items-center text-center"><span
+                                class="relative flex h-44 w-full rounded-2xl"><img
+                                    class="aspect-square h-full w-full rounded" alt="Imaging &amp; Diagnostics"
+                                    src="doctors.jpg"></span>
+                            <h3 class="font-bold text-2xl text-white m-4">Imaging &amp; Diagnostics</h3>
+                            <p class="text-white">Medical provides a comprehensive array of diagnostic imaging services.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex justify-center">
+                        <video src="Watch.mp4" alt="Watch This Video" controls class="rounded-lg" width="720"
+                            height="240" onclick="playPause()" style="aspect-ratio: 320 / 240; object-fit: cover;">
+
+                        </video>
+
+                    </div>
+                    <div class="m-14">
+                        <h2 class="text-2xl font-bold mt-32 text-blue-800 flex items-center justify-center">Watch This
+                            Video</h2>
+                        <p class="flex items-center justify-center text-blue-600 m-2 px-24">Find out more about our
+                            clinic by watching this video presentation of Medical.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-blue-100 p-4 text-center">
+            <p>© 2024 Medical Clinic. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

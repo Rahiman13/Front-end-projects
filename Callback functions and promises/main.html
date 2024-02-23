@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Callback Function Example</title>
+</head>
+
+<body>
+    <h1>Callback Function and Promises</h1>
+    <button onclick="calculateSum(5, 10, performOperation)">Calculate Sum</button>
+    <button onclick="calculateDifference(15, 7, performOperation)">Calculate Difference</button>
+    <h2 id="result"></h2>
+
+    <script>
+        function performOperation(result) {
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+        function calculateSum(num1, num2, callback) {
+            const sum = num1 + num2;
+            callback(sum);
+        }
+
+        function calculateDifference(num1, num2, callback) {
+            const difference = num1 - num2;
+            callback(difference);
+        }
+    </script>
+
+    <script>
+        // Function to calculate sum
+        function calculateSum() {
+            const num1 = prompt("Enter first number:");
+            const num2 = prompt("Enter second number:");
+
+            const sumPromise = new Promise((resolve, reject) => {
+                if (isNaN(num1) || isNaN(num2)) {
+                    reject("Invalid input");
+                } else {
+                    const sum = Number(num1) + Number(num2);
+                    resolve(sum);
+                }
+            });
+
+            sumPromise.then(result => {
+                document.getElementById("result").innerHTML = "Sum: " + result;
+            }).catch(error => {
+                document.getElementById("result").innerHTML = "Error: " + error;
+            });
+        }
+
+        function calculateDifference() {
+            const num1 = prompt("Enter first number:");
+            const num2 = prompt("Enter second number:");
+
+            const differencePromise = new Promise((resolve, reject) => {
+                if (isNaN(num1) || isNaN(num2)) {
+                    reject("Invalid input");
+                } else {
+                    const difference = Number(num1) - Number(num2);
+                    resolve(difference);
+                }
+            });
+
+            differencePromise.then(result => {
+                document.getElementById("result").innerHTML = "Difference: " + result;
+            }).catch(error => {
+                document.getElementById("result").innerHTML = "Error: " + error;
+            });
+        }
+    </script>
+</body>
+
+</html>

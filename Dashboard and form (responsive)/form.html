@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidenav {
+            width: 200px;
+            height: 100%;
+            margin-top: 5em;
+            margin-bottom: 1em;
+            /* padding-top: 5em; */
+            position: fixed;
+            background-color: #0e0e0f;
+        }
+
+        .sidenav a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            padding: 5px;
+        }
+
+        .sidenav a:hover {
+            color: black;
+            background-color: white;
+        }
+
+        .side-menu ul {
+            text-align: center;
+            list-style: none;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .side-menu a {
+            display: block;
+            padding: 1em;
+        }
+
+        .side-menu a.active {
+            background: #343842;
+        }
+
+        .side-menu a.active span,
+        .side-menu a.active small {
+            color: #fff;
+        }
+
+        .side-menu a span {
+            display: flex;
+            text-align: center;
+            font-size: 1.7rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        #name {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 15%;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .username {
+            margin-top: 20px;
+            width: 75px;
+            height: 75px;
+            /* overflow: hidden; */
+
+        }
+
+        #username-img {
+            border-radius: 50%;
+            width: 100%;
+            height: auto;
+            margin-left: 60%;
+            /* display: flex;
+        justify-content: center;
+        align-items: center; */
+
+        }
+
+        nav{
+            width: 100%;
+            position: fixed;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            /* margin-top: 2px; */
+            margin-bottom: 2px;
+            padding: 15px;
+            background-color: black;
+        }
+
+
+        .nav-links i {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+
+
+        }
+
+        .nav-links i:hover {
+            color: black;
+            border-bottom-color: black;
+            border-radius: 30px;
+            background-color: white;
+        }
+
+        .main {
+            /* background-color: rgb(31, 28, 28); */
+            background-color: antiquewhite;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section class="sidenav">
+        <div class="side-head">
+            <!-- <h1 style="color: antiquewhite; font-size: 2rem;margin-top: 5px;"><b>Dash Board</b></h1> -->
+        </div>
+        <div class="username">
+            <img src="Rahiman .jpg" alt="User" id="username-img">
+        </div>
+        <p id="name"><b>Rahiman Shaik</b></p>
+        <div class="side-menu">
+            <ul>
+                <li>
+                    <a href="main.html" >
+                        <large><b>Dashboard</b></large>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <large><b>Profile</b></large>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <large><b>Mailbox</b></large>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <large><b>Orders</b></large>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <large><b>Account</b></large>
+                    </a>
+                </li>
+                <li>
+                    <a href="form.html" class="active">
+                        <large><b>Form</b></large>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <large><b>Settings</b></large>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <large><b>Logout</b></large>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><i class="la  la-search" style="font-size: 2em;"></i></li>
+                <li><i class="la la-bell" style="font-size: 2em;"></i></li>
+                <li><i class="la la-user-alt" style="font-size: 2em;"></i></li>
+                <li><i class="la la-cog" style="font-size: 2em;"></i></li>
+
+            </ul>
+        </nav>
+
+    </header>
+    <!-- <div class=" bg-gray-100 ">
+        <nav class="bg-black shadow fixed w-full">
+            <div class="max-w-8xl mx-auto px-4 sm:px-4 lg:px-2">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center justify-between">
+                            <h1 class="text-2xl font-bold text-blue-600">SMART SCHOOL</h1>
+                        </div>
+                        <div class="hidden sm:ml-6 sm:flex sm:space-x-8 m-2"><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Staff Details</a><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Staff Attendance</a><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Biometric Attendance</a><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Feedback</a><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Staff Leaves</a><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Staff</a><a
+                                class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                                href="#">Report</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 ml-4">
+                        <button
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-orange-300 hover:text-accent-foreground h-10 px-4 py-2 bg-orange-600">Under
+                            Implementation Track Progress
+                        </button>
+                        <button
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 bg-blue-600 hover:bg-blue-300">Get
+                            Help
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-2 ml-4 gap-2 mr-2">
+                        <p class="text-white text-sm">AY:2023-2024</p>
+                        <i class="fa fa-home" style="color: antiquewhite;"></i>
+                        <i class="fa fa-bell" style="color: antiquewhite;"></i>
+                        <i class="fa fa-search" style="color: antiquewhite;"></i>
+                        <i class="fa fa-box" style="color: antiquewhite;"></i>
+                        <i class="fa fa-user" style="color: antiquewhite;"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div> -->
+    <div class="main">
+        <div class="  border ml-52 ">
+            <div class="mb-4 flex items-center mt-24 "><button
+                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary/80 h-10 px-4 py-2 bg-blue-600 text-white hover:bg-blue-300">
+                    <a href="main.html">← Back</a>
+                </button>
+                <h1 class="text-xl font-semibold ml-4 text-blue-600">Enroll New Staff</h1>
+                <div></div>
+            </div>
+            <div class="mb-6 ">
+                <h2 class="mb-2 text-2xl font-semibold flex justify-center">BRANCH: SHAHEEN JUNIOR COLLEGE</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm col-span-2" data-v0-t="card">
+                        <div class="flex flex-col space-y-1.5 p-6">
+                            <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">Staff
+                                Details
+                            </h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-3 gap-4 ">
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="employement-status">
+                                        <label for="employment-status" class="text-sm font-medium">Employment
+                                            Status:</label>
+                                        <select id="employement-status" name="employement-status"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select">Select</option>
+                                            <option value="Temporary">Temporary</option>
+                                            <option value="Permanent">Permanent</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class=""><label class="text-sm font-medium">Staff Type :</label>
+                                    <div class=" flex items-center space-x-2"><input id="teaching" class="text-blue-600"
+                                            type="radio" name="staff-type"><label for="teaching"
+                                            class="text-sm">Teaching</label><input id="non-teaching"
+                                            class="text-blue-600" type="radio" name="staff-type"><label
+                                            for="non-teaching" class="text-sm">Non
+                                            Teaching</label><input id="transport" class="text-blue-600" type="radio"
+                                            name="staff-type"><label for="transport" class="text-sm">Transport</label>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="staff-department">
+                                        <label for="staff-department" class="text-sm font-medium">Staff Department:
+                                        </label>
+                                        <select id="department" name="department"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select">Select Department</option>
+                                            <option value="ECE">ECE</option>
+                                            <option value="CSE">CSE</option>
+                                            <option value="Mechanical">Mechanical</option>
+                                            <option value="EEE">EEE</option>
+                                            <option value="EIE">EIE</option>
+                                            <option value="Civil">Civil</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="designation">
+                                        <label for="designation" class="text-sm font-medium">Designation: </label>
+                                        <select id="designation" name="designation"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select Designation">Select Designation</option>
+                                            <option value="Assistant">Assistant</option>
+                                            <option value="Professor">Professor</option>
+                                            <option value="Asst professor">Asst professor</option>
+                                            <option value="HOD">HOD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="qualification-type">
+                                        <label for="qualification-type" class="text-sm font-medium">Qualification Type:
+                                        </label>
+                                        <select id="qualification-type" name="qualification-type"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select Qualification-type">Select Qualification-type</option>
+                                            <option value="Bachelor's degree">Bachelor's degree</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Post Graduate">Post Graduate</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="educational-qualification">
+                                        <label for="education-qualification" class="text-sm font-medium">Education
+                                            Qualification: </label>
+                                        <select id="qualification" name="qualification"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select Qualification">Select Qualification</option>
+                                            <option value="M.Tech">M.Tech</option>
+                                            <option value="Msc">Msc</option>
+                                            <option value="B.Tech">B.Tech</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="trained">
+                                        <label for="trained-as" class="text-sm font-medium">Trained As: </label>
+                                        <select id="trained" name="trained"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select Level">Select Level</option>
+                                            <option value="Level 1">Level 1</option>
+                                            <option value="Level 2">Level 2</option>
+                                            <option value="Level 3">Level 3</option>
+                                            <option value="Level 4">Level 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex items-center"><label class="text-sm font-medium">CTET Qualified
+                                        :</label>
+                                    <div class="ml-4 flex items-center space-x-2"><input id="yes" class="text-blue-600"
+                                            type="radio" name="ctet-qualified"><label for="yes"
+                                            class="text-sm">Yes</label><input id="no" class="text-blue-600" type="radio"
+                                            name="ctet-qualified"><label for="no" class="text-sm">No</label></div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="category">
+                                        <label for="employment-category" class="text-sm font-medium">Employment
+                                            Category:
+                                        </label>
+                                        <select id="category" name="category"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select Category">Select Category</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-1.5">
+                                    <div class="access">
+                                        <label for="access-level" class="text-sm font-medium">Access Level: </label>
+                                        <select id="religion" name="religion"
+                                            class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                            <option value="Select AccessLevel">Select AccessLevel</option>
+                                            <option value="Level 1">Level 1</option>
+                                            <option value="Level 2">Level 2</option>
+                                            <option value="Level 3">Level 3</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm col-span-2" data-v0-t="card">
+                        <div class="flex flex-col space-y-1.5 p-6">
+                            <h3 class="text-xl font-semibold mb-3">Personal Details</h3>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="firstname">
+                                    <label for="firstname">First Name:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="First Name" required>
+                                </div>
+                                <div class="middlename">
+                                    <label for="firstname">Middle Name:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Middle Name" required>
+                                </div>
+                                <div class="lastname">
+                                    <label for="lastname">Last Name:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="emergency">
+                                    <label for="emergency">Emergency Contact:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Emergency Contact No">
+                                </div>
+                                <div class=""><label
+                                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        for="gender">Gender: </label>
+                                    <div class="ml-4 flex items-center space-x-2">
+                                        <input id="male" class="text-blue-600" type="radio" name="gender-type"><label
+                                            for="male" class="text-sm">Male</label>
+                                        <input id="female" class="text-blue-600" type="radio" name="gender-type"><label
+                                            for="female" class="text-sm">Female</label>
+                                        <input id="Others" class="text-blue-600" type="radio" name="gender-type"><label
+                                            for="Others" class="text-sm">Others</label>
+                                    </div>
+                                </div>
+                                <div class=" justify-between">
+                                    <label for="date">Date: </label>
+                                    <input type="date"
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="dd-mm-yyyy" required>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="mobile">
+                                    <label for="mobilenum">Mobile No:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Mobile No">
+                                </div>
+                                <div class="email">
+                                    <label for="email">Email Id:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Email Id">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="permanent-address">
+                                    <label for="permanent-address">Permanent Address:</label>
+                                    <textarea
+                                        class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Permanent Address"></textarea>
+                                </div>
+                                <div class="corresponding-address">
+                                    <label for="corresponding-address">Corresponding Address:</label>
+                                    <textarea
+                                        class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Corresponding Address"></textarea>
+                                </div>
+                                <div class="items-center">
+                                    <label for="religion">Religion:</label>
+                                    <select id="religion" name="religion"
+                                        class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                        <option value="Select">Select</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Non Indian">Non Indian</option>
+                                        <option value="NRI">NRI</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm col-span-2" data-v0-t="card">
+                        <div class="flex flex-col space-y-1.5 p-6">
+                            <h3 class="text-xl font-semibold mb-3">Other Details</h3>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="aadhar">
+                                    <label for="aadhar">Aadhar No:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Aadhar No" required>
+                                </div>
+                                <div class="pan">
+                                    <label for="pan">Pan No:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Pan No" required>
+                                </div>
+                                <div class="date-of-joining">
+                                    <label for="date-of-joining">Date of Joining:</label>
+                                    <input type="date"
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="dd-mm-yyyy" required>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="staff-reference code">
+                                    <label for="staff-reference code">Staff Reference code:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Staff Reference code" required>
+                                </div>
+                                <div class=""><label class="text-sm font-medium">Salary Pay Type
+                                        :</label>
+                                    <div class="ml-4 flex items-center space-x-2">
+                                        <input id="Consolidate" class="text-blue-600" type="radio" name="Salary">
+                                        <label for="Consolidate" class="text-sm">Consolidate</label>
+                                        <input id="Pay" class="text-blue-600" type="radio" name="Salary">
+                                        <label for="Pay" class="text-sm">Pay</label>
+                                        <input id="Other" class="text-blue-600" type="radio" name="Salary">
+                                        <label for="Other" class="text-sm">Others</label>
+                                    </div>
+                                </div>
+                                <div class="govt-id">
+                                    <label for="govt-id">Government Id:</label>
+                                    <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="Government Id" required>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="flex flex-col space-y-1.5">
+                                    <label for="citizen">Citizenship: </label>
+                                    <select id="citizen" name="citizen"
+                                        class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text sm ring-offset-background">
+                                        <option value="Select">Select Citizenship</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Non Indian">Non Indian</option>
+                                        <option value="NRI">NRI</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" space-y-1.5 p-6">
+                            <button
+                                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 bg-red-600 text-white hover:bg-red-500">Save
+                                &amp; Continue</button>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

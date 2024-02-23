@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: whitesmoke;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+
+    }
+
+    h1:hover {
+        color: #f00;
+        /* Change the color of the heading on hover */
+    }
+
+    /* header h1 {
+        margin: 0;
+    } */
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 1rem;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #8d4de0;
+        /* Change the color on hover */
+    }
+
+    nav ul li:hover {
+        background-color: #444;
+    }
+
+    @media (max-width: 768px) {
+        nav ul li {
+            flex-basis: 150%;
+        }
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: rgb(249, 246, 246);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #8d4de0
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .request-demo-button {
+        background-color: rgb(64, 64, 195);
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .request-demo-button:hover {
+        background-color: #3e8e41;
+    }
+
+    main {
+        padding: 2rem;
+    }
+
+    main h2,
+    main h3 {
+        margin-top: 0;
+    }
+
+    main form {
+        display: flex;
+        margin-bottom: 2rem;
+    }
+
+    main form input[type="text"] {
+        flex-grow: 1;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    main form button[type="submit"] {
+        padding: 0.5rem 1rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+
+    main form button[type="submit"]:hover {
+        background-color: #444;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
+
+    .overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #f1f1f1;
+        padding: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 500px;
+        height: auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .overlay-content h2 {
+        margin-top: 0;
+    }
+
+    .overlay-content form {
+        margin-top: 1rem;
+    }
+
+    .overlay-content label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .overlay-content input[type="email"],
+    .overlay-content input[type="password"] {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .overlay-content button[type="submit"] {
+        padding: 0.5rem 1rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .overlay-content button[type="submit"]:hover {
+        background-color: #444;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #aaa;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    #sign-in-link {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    #sign-in-link:hover {
+        text-decoration: underline;
+    }
+
+    .popular-books-swiper {
+        width: 100%;
+        height: 400px;
+        margin-top: 1rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: transparent;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 2rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .swiper-button-prev {
+        left: -25px;
+    }
+
+    .swiper-button-next {
+        right: -25px;
+    }
+
+    .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .swiper-slide:hover {
+        transform: translateY(-10px);
+    }
+
+    .swiper-slide img {
+        width: 150px;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .swiper-slide h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #5c5ced;
+    }
+
+
+    .ular-features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .ular-feature {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .ular-feature:hover {
+        transform: translateY(-10px);
+    }
+
+    .ular-feature img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .ular-feature h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        padding: 0 1rem;
+    }
+
+    .ular-feature p {
+        margin: 0;
+        font-size: 1rem;
+        color: #666;
+        padding: 0 1rem;
+    }
+
+    .ular-feature-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: #f2f2f2;
+        border-radius: 50%;
+        margin: 0 auto 1rem auto;
+    }
+
+    .ular-feature-icon img {
+        width: 25px;
+        height: auto;
+    }
+
+
+    #new-papers-section {
+        background-color: #f2f2f2;
+        padding: 2rem;
+        border-radius: 5px;
+        margin-top: 2rem;
+    }
+
+    #new-papers-section ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    #new-papers-section li {
+        flex-basis: calc(33% - 1rem);
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #new-papers-section li:hover {
+        transform: translateY(-10px);
+    }
+
+
+    #about-section {
+        background-color: #f2f2f2;
+        padding: 2rem;
+        border-radius: 5px;
+        margin-top: 2rem;
+        position: relative;
+    }
+
+    #about-section h3 {
+        margin-top: 0;
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .about-decoration {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #5c5ced;
+        border-radius: 5px;
+    }
+
+    #about-section p {
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    #sign-in-window{
+        background-image: url(library.jpg);
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+        }
+
+        header nav {
+            margin-top: 1rem;
+        }
+
+        main li {
+            flex-basis: calc(50% - 1rem);
+        }
+
+        main li:nth-child(2n+3) {
+            margin-right: 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        main li {
+            flex-basis: 100%;
+        }
+    }
+</style>
+<script> document.addEventListener('DOMContentLoaded', function () {
+        const signInWindow = document.getElementById('sign-in-window');
+        const closeBtn = document.querySelector('.close');
+        const signInLink = document.getElementById('sign-in-link');
+        const requestDemoButton = document.querySelector('.request-demo-button');
+        signInWindow.style.display = 'flex'; closeBtn.addEventListener('click', function () {
+            signInWindow.style.display = 'none';
+        });
+        requestDemoButton.addEventListener('click', function () {
+            signInWindow.style.display = 'none';
+        });
+
+        var swiper = new Swiper('.popular-books-swiper',
+            {
+                freeMode: true, loop: true, keyboard: {
+                    enabled: true,
+                }, navigation: {
+                    nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev',
+                },
+            });
+
+    }); 
+</script>
+
+<body>
+    <header>
+        <h3>RS library</h3>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#library figures">Library Figures</a></li>
+                <li><a href="#new papers">News Papers</a></li>
+                <li><a href="#marketing">Catalogue </a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="contact">
+                        <div class="dropdown"> Contact us <div class="dropdown-content"> <a href="#">Email</a> <a
+                                    href="#">Mobile</a> <a href="#">Location</a> </div>
+                        </div>
+                    </a></li> <button class="request-demo-button">Request Demo</button>
+            </ul>
+        </nav>
+    </header>
+    <div id="sign-in-window" class="overlay">
+        <div class="overlay-content">
+            <h2>Sign In</h2>
+            <form> <label for="email">Email:</label> <input type="email" id="email" name="email" required> <label
+                    for="password">Password:</label> <input type="password" id="password" name="password" required>
+                <button type="submit">Sign In</button>
+                <br><br><br>
+                <p>Don't have an account? <a href="#" style="color: darkblue; ""> Sign up</a></p>
+            </form> <span class="close">&times;</span>
+        </div>
+    </div>
+    <main>
+        <p>Search our catalog to find books, movies, and more.</p>
+        <form id="search-form"> <input type="text" id="search-box" placeholder="Search..."> <button
+                type="submit">Search</button> </form>
+        <section id="welcome-section">
+            <h1>Welcome to RS Library </h1>
+        </section>
+        <section id="popular-books-section">
+            <h2>Popular Books</h2>
+            <div class="popular-books-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <a href="https://en.wikipedia.org/wiki/Bird_Box_(novel)"><img src="bird box.jpg"
+                                    alt="Book Cover"></a>
+                            <h4>Bird Box</h4>
+                            <p>Bird Box is a 2014 post-apocalyptic novel and the debut novel by American writer and
+                                singer
+                                Josh Malerman.[1] The book was first published in the United Kingdom on March 27, 2014,
+                                through Harper Voyager and in the United States on May 13, 2014, through Ecco Press. The
+                                book follows a woman who must find a way to guide herself and her children to safety
+                                despite
+                                the potential threat from an unseen adversary. The story is partially told via
+                                flashbacks
+                                and takes place during three time periods.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <a href="https://en.wikipedia.org/wiki/The_Haunting_of_Hill_House"> <img
+                                    src="house on hill.jpg" alt="Book Cover"></a>
+                            <h4>The Haunting of Hill House</h4>
+                            <p>The Haunting of Hill House is a 1959 gothic horror novel by American author Shirley
+                                Jackson.
+                                It was a finalist for the National Book Award and has been made into two feature films
+                                and a
+                                play, and is the basis of a Netflix series.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <a href="https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone"> <img
+                                    src="socer stone.jpg" alt="Book Cover"></a>
+                            <h4>Harry Potter and the Philosopher's Stone</h4>
+                            <p>Harry Potter and the Philosopher’s Stone, the first novel in the immensely popular Harry
+                                Potter series by British writer J.K. Rowling. It was first published in Britain in 1997
+                                and
+                                appeared in the United States the following year under the title Harry Potter and the
+                                Sorcerer’s Stone. The book’s imaginative story line about a boy wizard made it an
+                                enduring
+                                hit with both children and adults.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <a
+                                href="https://en.wikipedia.org/wiki/Harry_Potter_and_the_Chamber_of_Secrets#:~:text=Harry%20Potter%20and%20the%20Chamber%20of%20Secrets%20is%20a%20fantasy,in%20the%20Harry%20Potter%20series.">
+                                <img src="secrets of chamber.jpg" alt="Book Cover"></a>
+                            <h4>Harry Potter and the Chamber of Secrets</h4>
+                            <p>Harry Potter and the Chamber of Secrets is a fantasy novel written by British author J.
+                                K.
+                                Rowling and the second novel in the Harry Potter series. The plot follows Harry's second
+                                year at Hogwarts School of Witchcraft and Wizardry, during which a series of messages on
+                                the
+                                walls of the school's corridors warn that the "Chamber of Secrets" has been opened and
+                                that
+                                the "heir of Slytherin" would kill all pupils who do not come from all-magical families.
+                                These threats are found after attacks that leave residents of the school petrified.
+                                Throughout the year, Harry and his friends Ron and Hermione investigate the attacks.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <a href="https://en.wikipedia.org/wiki/Nineteen_Eighty-Four"> <img src="1984.jpg"
+                                    alt="Book Cover"></a>
+                            <h4>1984</h4>
+                            <p>Nineteen Eighty-Four (also published as 1984) is a dystopian novel and cautionary tale by
+                                English writer George Orwell. It was published on 8 June 1949 by Secker & Warburg as
+                                Orwell's ninth and final book completed in his lifetime. Thematically, it centres on the
+                                consequences of totalitarianism, mass surveillance and repressive regimentation of
+                                people
+                                and behaviours within society.[2][3] Orwell, a democratic socialist, modelled the
+                                authoritarian state in the novel on the Soviet Union in the era of Stalinism, and Nazi
+                                Germany.[4] More broadly, the novel examines the role of truth and facts within
+                                societies
+                                and the ways in which they can be manipulated.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="swiper-slide">
+                        <div class="card">
+                            <img src="the-girl-with-the-dragon-tattoo.jpg" alt="Book Cover"
+                                href="https://en.wikipedia.org/wiki/The_Girl_with_the_Dragon_Tattoo">
+                            <h4>The Girl with the Dragon Tattoo</h4>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+        <section id="features-section">
+            <h3>Features</h3>
+            <!-- <ul>
+                <li>Search for books, movies, and more</li>
+                <li>Reserve items for pickup</li>
+                <li>Renew items online</li>
+                <li>Access e-books and audiobooks</li>
+                <li>Request items through interlibrary loan</li>
+            </ul> -->
+        </section>
+        <div class="ular-features">
+            <div class="ular-feature">
+                <div class="ular-feature-icon">
+                    <img src="mobile.jpg" alt="Feature 1 Icon">
+                </div>
+                <h3>Mobile, Tablet, & Desktop</h3>
+                <p>Finally, a simple solution that works seamlessly with mobile, tablet, and desktop.</p>
+            </div>
+            <div class="ular-feature">
+                <div class="ular-feature-icon">
+                    <img src="size.jpg" alt="Feature 2 Icon">
+                </div>
+                <h3>Accessible and Inclusive</h3>
+                <p>We’re eliminating barriers for people with disabilities.</p>
+            </div>
+            <div class="ular-feature">
+                <div class="ular-feature-icon">
+                    <img src="locator.jpg" alt="Feature 3 Icon">
+                </div>
+                <h3>Branch Locator</h3>
+                <p>Easily find a branch based on name, location, or amenities.</p>
+            </div>
+            <div class="ular-feature">
+                <div class="ular-feature-icon">
+                    <img src="search.jpg" alt="Feature 4 Icon">
+                </div>
+                <h3>Advanced Search</h3>
+                <p>A comprehensive approach to searching your site, catalogs, and events from one spot.</p>
+            </div>
+            <div class="ular-feature">
+                <div class="ular-feature-icon">
+                    <img src="calender.jpg" alt="Feature 5 Icon">
+                </div>
+                <h3>Find Events</h3>
+                <p>We make it easy for your patrons to explore and register for their favorite programs and events.</p>
+            </div>
+            <div class="ular-feature">
+                <div class="ular-feature-icon">
+                    <img src="menu.png" alt="Feature 6 Icon">
+                </div>
+                <h3>Streamlined Navigation</h3>
+                <p>A user-friendly navigation based on feedback and behavior.</p>
+            </div>
+        </div>
+        <section id="new-papers-section">
+            <h3>New Papers</h3>
+            <ul>
+                <li><a href="https://www.nytimes.com/">The New York Times</a></li>
+                <li><a href="https://www.washingtonpost.com/">Eenadu</a></li>
+                <li><a href="https://www.wsj.com/">Sakshi</a></li>
+                <li><a href="https://www.economist.com/">Andhra jyothi</a></li>
+                <li><a href="https://www.time.com/">Time Magazine</a></li>
+            </ul>
+        </section>
+        <!-- <section id="about-section">
+            <h3>About</h3>
+            <p>The Library System is a public library system serving the residents of Anytown, USA. Our mission is to
+                provide access to information,
+                promote literacy, and enhance the quality of life for our community. We offer a wide range of resources,
+                including books, movies,
+                e-books, audiobooks, and more. Our knowledgeable staff is here to help you find what you need and answer
+                any questions you may have.
+                We welcome feedback and suggestions from our patrons and are committed to continuous improvement.</p>
+        </section> -->
+        <section id="about-section">
+            <h3>About</h3>
+            <div class="about-decoration"></div>
+            <p>The Library System is a public library system serving the residents of Anytown, USA. Our mission is to
+                provide access to information, promote literacy, and enhance the quality of life for our community. We
+                offer a wide range of resources, including books, movies, e-books, audiobooks, and more. Our
+                knowledgeable staff is here to help you find what you need and answer any questions you may have. We
+                welcome feedback and suggestions from our patrons and are committed to continuous improvement.</p>
+        </section>
+        <footer>
+            <p>&copy; 2023 Anytown Library System. All rights reserved.</p>
+            <p>Contact us: (555) 123-4567 | [info@anytownlibrary.org](mailto:info@anytownlibrary.org)</p>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</body>
+
+</html>
